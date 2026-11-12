@@ -1,0 +1,33 @@
+<svg width="64" height="64" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="zsuCrimsonFav" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b91c1c"/>
+      <stop offset="100%" stop-color="#881337"/>
+    </radialGradient>
+    <linearGradient id="zsuGoldFav" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+    <radialGradient id="zsuBlueFav" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Схрещені мечі -->
+  <path d="M 18 82 L 82 18 M 80 15 L 85 20 M 15 85 L 20 80" stroke="url(#zsuGoldFav)" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M 82 82 L 18 18 M 20 15 L 15 20 M 85 85 L 80 80" stroke="url(#zsuGoldFav)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Хрест ЗСУ -->
+  <path d="M 44 38 L 42 16 L 30 10 L 50 14 L 70 10 L 58 16 L 56 38 L 62 44 L 84 42 L 90 30 L 86 50 L 90 70 L 84 58 L 62 56 L 56 62 L 58 84 L 70 90 L 50 86 L 30 90 L 42 84 L 44 62 L 38 56 L 16 58 L 10 70 L 14 50 L 10 30 L 16 42 L 38 44 Z" fill="url(#zsuCrimsonFav)" stroke="url(#zsuGoldFav)" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Медальйон -->
+  <circle cx="50" cy="50" r="16" fill="url(#zsuBlueFav)" stroke="url(#zsuGoldFav)" stroke-width="2.5"/>
+
+  <!-- Тризуб -->
+  <path d="M 48.5 39 L 50 36 L 51.5 39 L 51.5 56 L 48.5 56 Z" fill="url(#zsuGoldFav)"/>
+  <path d="M 46 41 C 44 43 43 46 43 49 C 43 53 46 55 48.5 56 L 48.5 53.5 C 47 52.5 45.5 51 45.5 49 C 45.5 47 46.5 45 47.5 44 Z" fill="url(#zsuGoldFav)"/>
+  <path d="M 54 41 C 56 43 57 46 57 49 C 57 53 54 55 51.5 56 L 51.5 53.5 C 53 52.5 54.5 51 54.5 49 C 54.5 47 53.5 45 52.5 44 Z" fill="url(#zsuGoldFav)"/>
+  <rect x="46" y="58" width="8" height="2" rx="0.5" fill="url(#zsuGoldFav)"/>
+</svg>

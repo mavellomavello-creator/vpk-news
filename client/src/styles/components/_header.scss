@@ -1,0 +1,158 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: $spacing-md 0;
+  background-color: rgba($primary-bg, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: all $transition-base;
+
+  &--scrolled {
+    background-color: rgba($primary-bg, 0.95);
+    border-bottom-color: $border-color;
+    padding: $spacing-sm 0;
+    box-shadow: $shadow-md;
+  }
+
+  &__container {
+    @include container;
+    @include flex-between;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    text-decoration: none;
+    color: $text-primary;
+    font-weight: 700;
+    font-size: $font-xl;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  &__logo-icon {
+    font-size: $font-2xl;
+  }
+
+  &__logo-text {
+    letter-spacing: 0.5px;
+  }
+
+  &__nav {
+    @include mobile {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background-color: $secondary-bg;
+      border-left: 1px solid $border-color;
+      padding: 5rem $spacing-xl $spacing-xl;
+      transition: right $transition-base;
+      z-index: 999;
+      overflow-y: auto;
+
+      &--open {
+        right: 0;
+      }
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $spacing-xs;
+    }
+  }
+
+  &__nav-item {
+    position: relative;
+  }
+
+  &__nav-link {
+    display: block;
+    padding: $spacing-sm $spacing-md;
+    color: $text-secondary;
+    font-size: $font-sm;
+    font-weight: 500;
+    border-radius: $radius-md;
+    transition: all $transition-fast;
+    white-space: nowrap;
+
+    &:hover {
+      color: $text-primary;
+      background-color: rgba($accent, 0.1);
+    }
+
+    &--active {
+      color: $accent;
+      background-color: rgba($accent, 0.1);
+    }
+
+    @include mobile {
+      padding: $spacing-md;
+      font-size: $font-base;
+      border-radius: $radius-md;
+    }
+  }
+
+  &__burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+
+    @include mobile {
+      display: flex;
+    }
+  }
+
+  &__burger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: $text-primary;
+    border-radius: 2px;
+    transition: all $transition-base;
+    transform-origin: center;
+  }
+
+  &__burger--active {
+    .header__burger-line {
+      &:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+}

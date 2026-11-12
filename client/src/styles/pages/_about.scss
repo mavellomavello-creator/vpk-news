@@ -1,0 +1,196 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.about-page {
+  padding-bottom: $spacing-3xl;
+
+  &__hero {
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, transparent 100%),
+      radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 60%);
+    padding: $spacing-3xl 0 $spacing-2xl;
+    text-align: center;
+    border-bottom: 1px solid rgba($border-color, 0.4);
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    font-size: $font-4xl;
+    font-weight: 800;
+    color: $text-primary;
+    margin-bottom: $spacing-md;
+
+    @include mobile {
+      font-size: $font-2xl;
+    }
+  }
+
+  &__title-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-md;
+  }
+
+  &__title-line {
+    width: 60px;
+    height: 2px;
+    background: $border-color;
+  }
+
+  &__title-icon {
+    font-size: 1.5rem;
+  }
+
+  &__mission {
+    padding: $spacing-3xl 0;
+
+    &-card {
+      @include card;
+      padding: $spacing-2xl;
+      background: linear-gradient(135deg, $card-bg 0%, #151e2e 100%);
+      border-left: 4px solid $accent;
+
+      @include mobile {
+        padding: $spacing-xl;
+      }
+    }
+
+    &-title {
+      font-size: $font-2xl;
+      color: $text-primary;
+      margin-bottom: $spacing-lg;
+    }
+
+    &-text {
+      color: $text-secondary;
+      font-size: $font-lg;
+      line-height: 1.8;
+      margin-bottom: $spacing-md;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__goals {
+    padding: $spacing-2xl 0;
+
+    &-title {
+      font-size: $font-2xl;
+      color: $text-primary;
+      text-align: center;
+      margin-bottom: $spacing-2xl;
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: $spacing-xl;
+    }
+  }
+
+  &__goal-item {
+    @include card;
+    padding: $spacing-xl;
+    position: relative;
+  }
+
+  &__goal-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba($accent, 0.25);
+    line-height: 1;
+    margin-bottom: $spacing-sm;
+    display: block;
+  }
+
+  &__goal-heading {
+    font-size: $font-xl;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__goal-text {
+    color: $text-secondary;
+    font-size: $font-sm;
+    line-height: 1.7;
+  }
+
+  &__features {
+    padding: $spacing-2xl 0;
+
+    &-title {
+      font-size: $font-2xl;
+      color: $text-primary;
+      text-align: center;
+      margin-bottom: $spacing-2xl;
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: $spacing-xl;
+    }
+  }
+
+  &__feature-card {
+    @include card;
+    padding: $spacing-xl;
+    text-align: center;
+  }
+
+  &__feature-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    margin-bottom: $spacing-md;
+  }
+
+  &__feature-heading {
+    font-size: $font-xl;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__feature-text {
+    color: $text-secondary;
+    font-size: $font-sm;
+    line-height: 1.7;
+  }
+
+  &__team {
+    padding: $spacing-2xl 0;
+
+    &-card {
+      @include card;
+      padding: $spacing-2xl;
+      text-align: center;
+      background: linear-gradient(135deg, $card-bg 0%, #151e2e 100%);
+
+      @include mobile {
+        padding: $spacing-xl;
+      }
+    }
+
+    &-title {
+      font-size: $font-2xl;
+      color: $text-primary;
+      margin-bottom: $spacing-lg;
+    }
+
+    &-text {
+      color: $text-secondary;
+      font-size: $font-base;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto $spacing-md;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.footer {
+  background-color: $secondary-bg;
+  border-top: 1px solid $border-color;
+  padding: $spacing-3xl 0 $spacing-xl;
+  margin-top: auto;
+
+  &__container {
+    @include container;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: $spacing-3xl;
+    margin-bottom: $spacing-2xl;
+
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-xl;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-xl;
+    }
+  }
+
+  &__brand {
+    @include tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    color: $text-primary;
+    font-weight: 700;
+    font-size: $font-xl;
+    margin-bottom: $spacing-md;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  &__logo-icon {
+    font-size: $font-2xl;
+  }
+
+  &__description {
+    color: $text-secondary;
+    font-size: $font-sm;
+    line-height: 1.7;
+    max-width: 400px;
+  }
+
+  &__links-title,
+  &__info-title {
+    color: $text-primary;
+    font-size: $font-base;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: $font-sm;
+  }
+
+  &__links-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__links-link {
+    color: $text-secondary;
+    font-size: $font-sm;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  &__info-text {
+    color: $text-secondary;
+    font-size: $font-sm;
+    margin-bottom: $spacing-sm;
+    line-height: 1.6;
+  }
+
+  &__bottom {
+    border-top: 1px solid $border-color;
+    padding-top: $spacing-xl;
+    text-align: center;
+  }
+
+  &__copyright {
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+}

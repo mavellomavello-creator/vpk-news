@@ -1,0 +1,625 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.admin-page {
+  padding: $spacing-2xl 0 $spacing-3xl;
+  min-height: 80vh;
+
+  &__container {
+    @include container;
+  }
+
+  // Стилі форми авторизації
+  &__auth-container {
+    @include container;
+    max-width: 460px;
+    margin: $spacing-3xl auto;
+  }
+
+  &__auth-card {
+    @include card;
+    padding: $spacing-2xl;
+  }
+
+  &__auth-header {
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__auth-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__auth-title {
+    font-size: $font-2xl;
+    color: $text-primary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__auth-subtitle {
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+
+  &__auth-tabs {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__auth-tab {
+    flex: 1;
+    padding: $spacing-sm;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: $text-secondary;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+    }
+
+    &--active {
+      color: $accent;
+      border-bottom-color: $accent;
+    }
+  }
+
+  &__auth-error {
+    background-color: rgba($danger, 0.15);
+    border: 1px solid rgba($danger, 0.3);
+    color: #fca5a5;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    font-size: $font-sm;
+    margin-bottom: $spacing-lg;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__password-input {
+    padding-right: 2.75rem !important;
+  }
+
+  &__password-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: $text-secondary;
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__auth-submit {
+    @include button-primary;
+    width: 100%;
+    padding: $spacing-md;
+    margin-top: $spacing-sm;
+  }
+
+  // Стилі панелі управління (дашборду)
+  &__dashboard-header {
+    @include flex-between;
+    margin-bottom: $spacing-2xl;
+    padding-bottom: $spacing-lg;
+    border-bottom: 1px solid $border-color;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-md;
+    }
+  }
+
+  &__dashboard-title {
+    font-size: $font-3xl;
+    color: $text-primary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__welcome-text {
+    color: $text-secondary;
+    font-size: $font-base;
+
+    strong {
+      color: $accent;
+    }
+  }
+
+  &__logout-btn {
+    @include button-danger;
+    padding: $spacing-xs $spacing-lg;
+    font-size: $font-sm;
+  }
+
+  &__section-header-row {
+    @include flex-between;
+    margin-bottom: $spacing-xl;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+  }
+
+  &__section-title {
+    font-size: $font-2xl;
+    color: $text-primary;
+  }
+
+  &__btn-cancel-edit {
+    padding: $spacing-xs $spacing-md;
+    background-color: transparent;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+    border-radius: $radius-md;
+    font-size: $font-sm;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: $text-primary;
+    }
+  }
+
+  &__btn-refresh {
+    padding: $spacing-xs $spacing-md;
+    background-color: $secondary-bg;
+    border: 1px solid $border-color;
+    color: $accent;
+    border-radius: $radius-md;
+    font-size: $font-sm;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: rgba($accent, 0.1);
+      border-color: $accent;
+    }
+  }
+
+  &__create-section {
+    @include card;
+    padding: $spacing-2xl;
+    margin-bottom: $spacing-3xl;
+
+    @include mobile {
+      padding: $spacing-lg;
+    }
+  }
+
+  &__form-error {
+    background-color: rgba($danger, 0.15);
+    border: 1px solid rgba($danger, 0.3);
+    color: #fca5a5;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    font-size: $font-sm;
+    margin-bottom: $spacing-lg;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__form-success {
+    background-color: rgba($accent-green, 0.15);
+    border: 1px solid rgba($accent-green, 0.3);
+    color: #86efac;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-md;
+    font-size: $font-sm;
+    margin-bottom: $spacing-lg;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__news-form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-lg;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__form-label {
+    font-size: $font-sm;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &__form-input {
+    @include form-input;
+  }
+
+  &__form-select {
+    @include form-input;
+    cursor: pointer;
+  }
+
+  &__form-textarea {
+    @include form-input;
+    resize: vertical;
+    font-family: inherit;
+  }
+
+  // Стилі елементів завантаження зображень
+  &__image-controls {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__file-upload-box {
+    position: relative;
+  }
+
+  &__file-input {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  &__file-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-sm;
+    padding: $spacing-md $spacing-xl;
+    background-color: $secondary-bg;
+    border: 2px dashed rgba($accent, 0.4);
+    border-radius: $radius-md;
+    color: $accent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all $transition-fast;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: rgba($accent, 0.08);
+      border-color: $accent;
+      color: #fff;
+    }
+  }
+
+  &__or-divider {
+    text-align: center;
+    color: $text-secondary;
+    font-size: $font-xs;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background-color: $border-color;
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
+  }
+
+  &__preview-box {
+    margin-top: $spacing-sm;
+    padding: $spacing-md;
+    background-color: rgba(10, 14, 23, 0.5);
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+  }
+
+  &__preview-title {
+    display: block;
+    font-size: $font-xs;
+    color: $text-secondary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__preview-img-wrapper {
+    position: relative;
+    max-width: 320px;
+    border-radius: $radius-sm;
+    overflow: hidden;
+    border: 1px solid $border-color;
+  }
+
+  &__preview-img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__preview-remove-btn {
+    position: absolute;
+    top: $spacing-xs;
+    right: $spacing-xs;
+    background-color: rgba($danger, 0.9);
+    border: none;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: $radius-sm;
+    font-size: $font-xs;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $danger;
+    }
+  }
+
+  &__preview-url {
+    display: block;
+    margin-top: $spacing-xs;
+    font-size: $font-xs;
+    color: $text-secondary;
+    font-family: monospace;
+    word-break: break-all;
+  }
+
+  &__form-actions {
+    display: flex;
+    gap: $spacing-md;
+    align-items: center;
+
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  &__form-submit {
+    @include button-primary;
+    padding: $spacing-sm $spacing-2xl;
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  &__btn-cancel-bottom {
+    padding: $spacing-sm $spacing-xl;
+    background-color: transparent;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+    border-radius: $radius-md;
+    font-size: $font-base;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: $text-primary;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  // Стилі таблиці списку новин
+  &__list-section {
+    @include card;
+    padding: $spacing-2xl;
+
+    @include mobile {
+      padding: $spacing-lg;
+    }
+  }
+
+  &__loading {
+    @include flex-column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-2xl 0;
+    gap: $spacing-sm;
+    color: $text-secondary;
+  }
+
+  &__spinner {
+    @include spinner(36px);
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-2xl 0;
+    color: $text-secondary;
+  }
+
+  &__table-wrapper {
+    overflow-x: auto;
+    @include custom-scrollbar;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $font-sm;
+
+    th,
+    td {
+      padding: $spacing-md;
+      text-align: left;
+      border-bottom: 1px solid rgba($border-color, 0.5);
+      vertical-align: middle;
+    }
+
+    th {
+      color: $text-secondary;
+      font-weight: 600;
+      background-color: rgba($secondary-bg, 0.5);
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      transition: background-color $transition-fast;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.02);
+      }
+    }
+  }
+
+  &__row--editing {
+    background-color: rgba($accent, 0.1) !important;
+    border-left: 3px solid $accent;
+  }
+
+  &__thumb {
+    width: 50px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: $radius-sm;
+    border: 1px solid $border-color;
+    display: block;
+  }
+
+  &__thumb-empty {
+    font-size: 1.5rem;
+    display: inline-block;
+  }
+
+  &__table-title {
+    font-weight: 600;
+    color: $text-primary;
+    max-width: 280px;
+    @include text-truncate(1);
+  }
+
+  &__table-category {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: $radius-full;
+    font-size: $font-xs;
+    background-color: rgba($accent, 0.15);
+    color: #93c5fd;
+  }
+
+  &__table-actions {
+    white-space: nowrap;
+  }
+
+  &__action-buttons {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+  }
+
+  &__btn-edit {
+    padding: 4px 10px;
+    background-color: transparent;
+    border: 1px solid rgba($accent, 0.5);
+    color: $accent;
+    border-radius: $radius-sm;
+    font-size: $font-xs;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: $accent;
+      color: #fff;
+    }
+  }
+
+  &__btn-delete {
+    padding: 4px 10px;
+    background-color: transparent;
+    border: 1px solid rgba($danger, 0.5);
+    color: #f87171;
+    border-radius: $radius-sm;
+    font-size: $font-xs;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: $danger;
+      color: #fff;
+    }
+  }
+
+  &__delete-confirm {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-size: $font-xs;
+    color: #fca5a5;
+  }
+
+  &__btn-confirm-yes {
+    padding: 2px 8px;
+    background-color: $danger;
+    border: none;
+    color: #fff;
+    border-radius: $radius-sm;
+    cursor: pointer;
+  }
+
+  &__btn-confirm-no {
+    padding: 2px 8px;
+    background-color: transparent;
+    border: 1px solid $border-color;
+    color: $text-secondary;
+    border-radius: $radius-sm;
+    cursor: pointer;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+}

@@ -1,0 +1,94 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Тригер підказки з ім'ям прив'язки Anchor
+.tooltip-anchor {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+// Елемент підказки на базі Popover API та CSS Anchor Positioning
+.modern-tooltip {
+  &[popover] {
+    border: 1px solid $border-color;
+    background-color: rgba($card-bg, 0.95);
+    color: $text-primary;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $radius-sm;
+    font-size: $font-xs;
+    line-height: 1.4;
+    white-space: nowrap;
+    box-shadow: $shadow-md;
+    pointer-events: none;
+    z-index: 3000;
+    backdrop-filter: blur(4px);
+
+    // Базовий закритий стан та налаштування переходів
+    opacity: 0;
+    transform: translateY(4px);
+    transition-property: opacity, transform, display, overlay;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out;
+    transition-behavior: allow-discrete;
+
+    // Відкритий стан Popover
+    &:is(:popover-open, .\:popover-open) {
+      opacity: 1;
+      transform: translateY(0);
+
+      @starting-style {
+        opacity: 0;
+        transform: translateY(4px);
+      }
+    }
+
+    // Позиціонування за допомогою сучасного CSS Anchor Positioning
+    @supports (position-area: block-start) {
+      position-area: block-start;
+      position-try-fallbacks: flip-block;
+      inset: auto;
+      margin: 0;
+      margin-bottom: 6px;
+    }
+
+    // Резервне позиціонування через функції anchor()
+    @supports not (position-area: block-start) {
+      inset: auto;
+      bottom: anchor(top);
+      left: anchor(center);
+      transform: translateX(-50%);
+      margin-bottom: 6px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition-duration: 0.05s;
+      transform: none;
+
+      &:is(:popover-open, .\:popover-open) {
+        transform: none;
+
+        @starting-style {
+          transform: none;
+        }
+      }
+    }
+  }
+
+  // Позиція знизу елемента
+  &--bottom[popover] {
+    @supports (position-area: block-end) {
+      position-area: block-end;
+      position-try-fallbacks: flip-block;
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+
+    @supports not (position-area: block-end) {
+      bottom: auto;
+      top: anchor(bottom);
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+  }
+}

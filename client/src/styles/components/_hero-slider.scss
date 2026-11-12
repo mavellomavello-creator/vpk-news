@@ -1,0 +1,326 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 92vh;
+  min-height: 580px;
+  max-height: 850px;
+  overflow: hidden;
+  background-color: $primary-bg;
+
+  @include mobile {
+    min-height: 500px;
+    height: 85vh;
+  }
+
+  &__track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out, transform 7s ease-out;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: scale(1.02);
+
+    &--active {
+      opacity: 1;
+      transform: scale(1.06);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    @include flex-center;
+    padding: $spacing-xl;
+  }
+
+  &__content {
+    text-align: center;
+    max-width: 900px;
+    animation: fadeIn 0.8s ease-out;
+    z-index: 5;
+  }
+
+  // Мілітарі бейджі
+  &__badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    background-color: rgba($accent, 0.2);
+    border: 1px solid rgba($accent, 0.5);
+    border-radius: $radius-full;
+    font-size: $font-xs;
+    font-weight: 700;
+    color: #93c5fd;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+  }
+
+  &__badge-dot {
+    color: $accent;
+    font-size: 10px;
+  }
+
+  &__status-tag {
+    padding: 4px 12px;
+    background-color: rgba(16, 185, 129, 0.18);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    border-radius: $radius-full;
+    font-size: $font-xs;
+    font-weight: 700;
+    color: #86efac;
+    letter-spacing: 1px;
+    backdrop-filter: blur(8px);
+  }
+
+  &__title {
+    font-size: $font-5xl;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: $spacing-sm;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba($accent, 0.3);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+
+    @include tablet {
+      font-size: $font-4xl;
+    }
+
+    @include mobile {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-xl;
+    color: #cbd5e1;
+    font-weight: 500;
+    margin-bottom: $spacing-md;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    line-height: 1.5;
+
+    @include tablet {
+      font-size: $font-lg;
+    }
+
+    @include mobile {
+      font-size: $font-base;
+    }
+  }
+
+  &__specs {
+    display: inline-block;
+    padding: $spacing-xs $spacing-lg;
+    background-color: rgba(17, 24, 39, 0.7);
+    border: 1px solid rgba($border-color, 0.8);
+    border-radius: $radius-md;
+    font-size: $font-sm;
+    color: #94a3b8;
+    margin-bottom: $spacing-lg;
+    backdrop-filter: blur(6px);
+
+    &-icon {
+      color: #fbbf24;
+      margin-right: 4px;
+    }
+
+    @include mobile {
+      font-size: $font-xs;
+      padding: $spacing-xs $spacing-sm;
+    }
+  }
+
+  &__decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-xl;
+  }
+
+  &__line {
+    display: block;
+    width: 70px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, $accent);
+
+    &:last-child {
+      background: linear-gradient(to left, transparent, $accent);
+    }
+
+    @include mobile {
+      width: 40px;
+    }
+  }
+
+  &__zsu-icon {
+    filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.4));
+  }
+
+  // Кнопки дій
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-sm $spacing-xl;
+    border-radius: $radius-md;
+    font-size: $font-base;
+    font-weight: 600;
+    transition: all $transition-fast;
+    text-decoration: none;
+    line-height: 1.5;
+
+    @include mobile {
+      width: 100%;
+      padding: $spacing-sm $spacing-lg;
+      font-size: $font-sm;
+    }
+
+    &--primary {
+      background: linear-gradient(135deg, $accent 0%, #2563eb 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba($accent, 0.4);
+
+      &:hover {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba($accent, 0.6);
+        color: #ffffff;
+      }
+    }
+
+    &--secondary {
+      background-color: rgba(17, 24, 39, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #e2e8f0;
+      backdrop-filter: blur(8px);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.12);
+        border-color: #ffffff;
+        color: #ffffff;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  // Стрілки
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    background-color: rgba(10, 14, 23, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 2.2rem;
+    cursor: pointer;
+    transition: all $transition-fast;
+    @include flex-center;
+    z-index: 10;
+    line-height: 1;
+    backdrop-filter: blur(8px);
+
+    &:hover {
+      background-color: $accent;
+      border-color: $accent;
+      transform: translateY(-50%) scale(1.08);
+      box-shadow: 0 0 15px rgba($accent, 0.5);
+    }
+
+    &--prev {
+      left: $spacing-xl;
+
+      @include mobile {
+        left: $spacing-sm;
+      }
+    }
+
+    &--next {
+      right: $spacing-xl;
+
+      @include mobile {
+        right: $spacing-sm;
+      }
+    }
+
+    @include mobile {
+      width: 42px;
+      height: 42px;
+      font-size: $font-2xl;
+    }
+  }
+
+  // Індикатори слайдів (точки навігації)
+  &__dots {
+    position: absolute;
+    bottom: $spacing-xl;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    background-color: rgba(10, 14, 23, 0.6);
+    padding: 6px 14px;
+    border-radius: $radius-full;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+  }
+
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all $transition-fast;
+    padding: 0;
+
+    &:hover {
+      border-color: #ffffff;
+    }
+
+    &--active {
+      background-color: $accent;
+      border-color: $accent;
+      width: 28px;
+      border-radius: 6px;
+    }
+  }
+}

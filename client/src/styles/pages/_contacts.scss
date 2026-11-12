@@ -1,0 +1,159 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contacts-page {
+  padding-bottom: $spacing-3xl;
+
+  &__hero {
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, transparent 100%);
+    padding: $spacing-3xl 0 $spacing-2xl;
+    text-align: center;
+    border-bottom: 1px solid rgba($border-color, 0.4);
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    font-size: $font-4xl;
+    font-weight: 800;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+
+    @include mobile {
+      font-size: $font-2xl;
+    }
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: $font-lg;
+
+    @include mobile {
+      font-size: $font-base;
+    }
+  }
+
+  &__content {
+    padding-top: $spacing-3xl;
+  }
+
+  &__info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-xl;
+    margin-bottom: $spacing-3xl;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__info-card {
+    @include card;
+    padding: $spacing-xl;
+    text-align: center;
+  }
+
+  &__info-icon {
+    font-size: 2.5rem;
+    display: inline-block;
+    margin-bottom: $spacing-md;
+  }
+
+  &__info-title {
+    font-size: $font-xl;
+    color: $text-primary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__info-text {
+    font-size: $font-base;
+    color: $accent;
+    font-weight: 600;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__info-detail {
+    font-size: $font-sm;
+    color: $text-secondary;
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-2xl;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__form-section,
+  &__map-section {
+    @include card;
+    padding: $spacing-2xl;
+
+    @include mobile {
+      padding: $spacing-lg;
+    }
+  }
+
+  &__form-title,
+  &__map-title {
+    font-size: $font-2xl;
+    color: $text-primary;
+    margin-bottom: $spacing-xl;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $border-color;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__form-group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__form-label {
+    font-size: $font-sm;
+    font-weight: 600;
+    color: $text-secondary;
+  }
+
+  &__form-input {
+    @include form-input;
+  }
+
+  &__form-textarea {
+    @include form-input;
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__form-submit {
+    @include button-primary;
+    padding: $spacing-md $spacing-xl;
+    margin-top: $spacing-sm;
+  }
+
+  &__map-wrapper {
+    border-radius: $radius-md;
+    overflow: hidden;
+    height: 400px;
+    border: 1px solid $border-color;
+
+    iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

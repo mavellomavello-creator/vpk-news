@@ -1,0 +1,197 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.news-page {
+  padding-bottom: $spacing-3xl;
+
+  &__hero {
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, transparent 100%);
+    padding: $spacing-3xl 0 $spacing-2xl;
+    text-align: center;
+    border-bottom: 1px solid rgba($border-color, 0.4);
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    font-size: $font-4xl;
+    font-weight: 800;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+
+    @include mobile {
+      font-size: $font-2xl;
+    }
+  }
+
+  &__subtitle {
+    color: $text-secondary;
+    font-size: $font-lg;
+
+    @include mobile {
+      font-size: $font-base;
+    }
+  }
+
+  &__content {
+    padding-top: $spacing-2xl;
+  }
+
+  &__controls {
+    display: flex;
+    gap: $spacing-md;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-xl;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  &__search {
+    position: relative;
+    flex-grow: 1;
+    max-width: 500px;
+
+    @include mobile {
+      max-width: 100%;
+    }
+
+    &-icon {
+      position: absolute;
+      left: $spacing-md;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: $font-base;
+      pointer-events: none;
+    }
+
+    &-input {
+      @include form-input;
+      padding-left: 2.75rem;
+      padding-right: 2.5rem;
+    }
+
+    &-clear {
+      position: absolute;
+      right: $spacing-sm;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: $text-secondary;
+      cursor: pointer;
+      padding: $spacing-xs $spacing-sm;
+      font-size: $font-sm;
+
+      &:hover {
+        color: $text-primary;
+      }
+    }
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    &-label {
+      color: $text-secondary;
+      font-size: $font-sm;
+      white-space: nowrap;
+    }
+
+    &-select {
+      @include form-input;
+      width: auto;
+      cursor: pointer;
+      padding-right: $spacing-xl;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__filter-btn {
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-full;
+    background-color: $secondary-bg;
+    color: $text-secondary;
+    border: 1px solid $border-color;
+    font-size: $font-sm;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $text-primary;
+      border-color: $accent;
+    }
+
+    &--active {
+      background-color: $accent;
+      color: #fff;
+      border-color: $accent;
+      box-shadow: 0 2px 8px rgba($accent, 0.4);
+    }
+  }
+
+  &__loading {
+    @include flex-column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-3xl 0;
+    gap: $spacing-md;
+    color: $text-secondary;
+  }
+
+  &__spinner {
+    @include spinner(44px);
+  }
+
+  &__error {
+    text-align: center;
+    padding: $spacing-xl;
+    background-color: rgba($danger, 0.1);
+    border: 1px solid rgba($danger, 0.3);
+    border-radius: $radius-lg;
+    color: #fca5a5;
+    margin: $spacing-xl 0;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-3xl 0;
+    color: $text-secondary;
+
+    &-icon {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: $spacing-sm;
+    }
+
+    h3 {
+      font-size: $font-xl;
+      color: $text-primary;
+      margin-bottom: $spacing-xs;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: $spacing-xl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}

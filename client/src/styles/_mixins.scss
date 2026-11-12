@@ -1,0 +1,198 @@
+@use 'variables' as *;
+
+// Адаптивні міксини (медіа-запити)
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $tablet + 1) {
+    @content;
+  }
+}
+
+// Центрування та обмеження ширини контейнера
+@mixin container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+  width: 100%;
+}
+
+// Допоміжні міксини Flexbox
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Стилі кнопок
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-xl;
+  background-color: $accent;
+  color: #fff;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $font-base;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color $transition-fast, transform $transition-fast, box-shadow $transition-fast;
+  text-decoration: none;
+  line-height: 1.5;
+
+  &:hover {
+    background-color: $accent-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($accent, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@mixin button-danger {
+  @include button-primary;
+  background-color: $danger;
+
+  &:hover {
+    background-color: #dc2626;
+    box-shadow: 0 4px 12px rgba($danger, 0.4);
+  }
+}
+
+@mixin button-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-xl;
+  background-color: transparent;
+  color: $accent;
+  border: 1px solid $accent;
+  border-radius: $radius-md;
+  font-size: $font-base;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition-fast;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $accent;
+    color: #fff;
+  }
+}
+
+// Базові стилі карток
+@mixin card {
+  background-color: $card-bg;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Стилі полів введення форм
+@mixin form-input {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  background-color: $secondary-bg;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  color: $text-primary;
+  font-size: $font-base;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  outline: none;
+
+  &::placeholder {
+    color: $text-secondary;
+  }
+
+  &:focus {
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba($accent, 0.15);
+  }
+}
+
+// Заголовок секції
+@mixin section-header {
+  text-align: center;
+  margin-bottom: $spacing-3xl;
+}
+
+// Анімація завантажувача (spinner)
+@mixin spinner($size: 40px) {
+  width: $size;
+  height: $size;
+  border: 3px solid $border-color;
+  border-top-color: $accent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+// Кастомізація смуги прокручування
+@mixin custom-scrollbar {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $primary-bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $border-color;
+    border-radius: 4px;
+
+    &:hover {
+      background: $text-secondary;
+    }
+  }
+}
+
+// Обрізання тексту двокрапкою
+@mixin text-truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

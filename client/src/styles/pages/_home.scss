@@ -1,0 +1,85 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.home-page {
+  padding-bottom: $spacing-3xl;
+
+  &__top-news {
+    padding: $spacing-3xl 0;
+  }
+
+  &__container {
+    @include container;
+  }
+
+  &__section-header {
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__section-icon {
+    font-size: 2rem;
+    display: inline-block;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__section-title {
+    font-size: $font-3xl;
+    font-weight: 700;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+
+    @include mobile {
+      font-size: $font-2xl;
+    }
+  }
+
+  &__section-line {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, $accent, $accent-green);
+    margin: 0 auto;
+    border-radius: $radius-full;
+  }
+
+  &__loading {
+    @include flex-column;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-3xl 0;
+    gap: $spacing-md;
+    color: $text-secondary;
+  }
+
+  &__spinner {
+    @include spinner(44px);
+  }
+
+  &__error {
+    text-align: center;
+    padding: $spacing-xl;
+    background-color: rgba($danger, 0.1);
+    border: 1px solid rgba($danger, 0.3);
+    border-radius: $radius-lg;
+    color: #fca5a5;
+    margin: $spacing-xl 0;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-3xl 0;
+    color: $text-secondary;
+    font-size: $font-lg;
+  }
+
+  &__news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: $spacing-xl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+}
